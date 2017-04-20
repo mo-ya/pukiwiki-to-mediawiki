@@ -1,24 +1,33 @@
-==============================================
- Pukiwiki ドキュメントの MediaWiki 変換ツール
-==============================================
+=========================================
+ Convert tool from Pukiwiki to MediaWiki
+=========================================
 
-対応項目
-============
+Usage
+======
 
-- 見出し
-- リスト
-- 整形済みテキスト
-- 表 (※ シンプルなパターンのみ。rowspan, colspan は未対応)
-- Pukiwiki の見出しに含まれる [#xxxxxxxx] という文字列の削除
+Pukiwiki Format Text `~/Document.pukiwiki` is converted to `~/Document.mediawiki`. ::
+
+    $ cat ~/Document.pukiwiki | sed -z -f pukiwiki-to-mediawiki.sed > ~/Document.mediawiki
+
+
+Supported Items
+===============
+
+- Header
+- List
+- Preformatted Text
+- Table (Only simple pattern. rowspan, colspan are not supported)
+- Strings [#xxxxxxxx] in headers are removed
   
-非対応項目
-==========
+Unsupported Items
+=================
 
-- rowspan, colspan を含む表
+- Table including rowspan or colspan
 
-動作確認環境
-============
+Test Environment
+================
 
 GNU sed 4.2.2
 
-※ 特に -z オプションを利用しているため 4.2.1 以前では利用不可
+**Over 4.2.2 is needed, because -z option is used.**
+
